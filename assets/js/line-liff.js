@@ -9,7 +9,7 @@ async function getLiff(liffID, backURL) {
             // profile = await liff.getProfile()
 
         } else {
-            alert('請先登入Line才知道是誰叫車喔！')
+            alert('請先登入Line進行驗證喔！')
             liff.login({
                 redirectUri: backURL // 使用者登入後要去到哪個頁面
             });
