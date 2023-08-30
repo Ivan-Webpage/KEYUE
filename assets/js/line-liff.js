@@ -13,11 +13,14 @@ async function login(backURL) {
     }).then(async function () {
         if (liff.isLoggedIn()) {
             alert('您已經登入成功！')
+            return true;
         }else{
             alert('很抱歉！登入失敗')
+            return false;
         }
     }).catch(function (error) {
         console.log("掛掉了: " + error);
+        return false;
     });
 }
 
