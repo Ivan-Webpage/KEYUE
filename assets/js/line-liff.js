@@ -1,24 +1,25 @@
-async function getLiff(liffID, backURL) {
+async function getLiff(liffID) {
     await liff.init({
         liffId: liffID,
-    }).then(async function () {
-        // 這邊開始寫使用其他功能
-        if (liff.isLoggedIn()) { // 判斷是否有登入line
-            // 取得使用者各種資料
-            // const context = liff.getContext();
-            // profile = await liff.getProfile()
-
-        } else {
-            alert('請先登入Line進行驗證喔！')
-            liff.login({
-                redirectUri: backURL // 使用者登入後要去到哪個頁面
-            });
-        }
     }).catch(function (error) {
         console.log("掛掉了: " + error);
     });
 
 };
+// 登入
+async function login(backURL) {
+    await liff.login({
+        redirectUri: backURL // 使用者登入後要去到哪個頁面
+    }).then(async function () {
+        if (liff.isLoggedIn()) {
+            alert('您已經登入成功！')
+        }else{
+            alert('很抱歉！登入失敗')
+        }
+    }).catch(function (error) {
+        console.log("掛掉了: " + error);
+    });
+}
 
 // 關閉liff畫面
 function turnOff() {
