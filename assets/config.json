@@ -1,6 +1,6 @@
 {
     "domain":"https://ivan-webpage.github.io/KEYUE/",
-    "backend_host":"keyue-cf5084f09962.herokuapp.com",
+    "backend_host":"https://keyue-cf5084f09962.herokuapp.com",
     "line_liff_id":{
         "test": "2000531869-3Q4KdXkj"
     }
