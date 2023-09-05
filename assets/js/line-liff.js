@@ -12,10 +12,10 @@ async function login(backURL) {
         redirectUri: backURL // 使用者登入後要去到哪個頁面
     }).then(async function () {
         if (liff.isLoggedIn()) {
-            alert('您已經登入成功！')
+            // alert('您已經登入成功！')
             return true;
         }else{
-            alert('很抱歉！登入失敗')
+            // alert('很抱歉！登入失敗')
             return false;
         }
     }).catch(function (error) {
