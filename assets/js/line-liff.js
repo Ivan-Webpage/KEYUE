@@ -14,7 +14,7 @@ async function login(backURL) {
         if (liff.isLoggedIn()) {
             // alert('您已經登入成功！')
             return true;
-        }else{
+        } else {
             // alert('很抱歉！登入失敗')
             return false;
         }
@@ -67,177 +67,12 @@ function sendTextMessages(word) {
 }
 
 // 使用者叫車_回傳選單
-function sendFlexMessages_order(arrive_time, totalKM, totalTime, money, carStyle, start_Station, stop_Station, end_Station, timestamp, orderid) {
+function sendFlexMessages_order() {
     try {
-        var station = [];
-        if (arrive_time.getFullYear() == '1900') {
-            arrive_time = "現在"
-        } else {
-            arrive_time = arrive_time.getFullYear() + '/' + (arrive_time.getMonth() + 1) + '/' + (arrive_time.getDate()) + ' ' + arrive_time.getHours() + ':' + arrive_time.getMinutes();
-        }
-        station.push({ // 預約時間
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-                {
-                    "type": "icon",
-                    "url": "https://imgur.com/1Nhpqcj.png"
-                },
-                {
-                    "type": "text",
-                    "text": "預約時間",
-                    "weight": "bold",
-                    "margin": "sm",
-                    "flex": 0,
-                    "size": "sm"
-                },
-                {
-                    "type": "text",
-                    "text": arrive_time,
-                    "size": "sm",
-                    "align": "end",
-                    "color": "#aaaaaa"
-                }
-            ]
-        })
-        station.push({ // 放費用
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-                {
-                    "type": "icon",
-                    "url": "https://imgur.com/1Nhpqcj.png"
-                },
-                {
-                    "type": "text",
-                    "text": "費用",
-                    "weight": "bold",
-                    "margin": "sm",
-                    "flex": 0,
-                    "size": "sm"
-                },
-                {
-                    "type": "text",
-                    "text": money + "元",
-                    "size": "sm",
-                    "align": "end",
-                    "color": "#aaaaaa"
-                }
-            ]
-        })
-        station.push({ //放車種
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-                {
-                    "type": "icon",
-                    "url": "https://imgur.com/1Nhpqcj.png"
-                },
-                {
-                    "type": "text",
-                    "text": "車種",
-                    "weight": "bold",
-                    "margin": "sm",
-                    "flex": 0,
-                    "size": "sm"
-                },
-                {
-                    "type": "text",
-                    "text": carStyle,
-                    "size": "sm",
-                    "align": "end",
-                    "color": "#aaaaaa"
-                }
-            ]
-        })
-        station.push({ // 放上車地點
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-                {
-                    "type": "icon",
-                    "url": "https://imgur.com/1Nhpqcj.png"
-                },
-                {
-                    "type": "text",
-                    "text": "上車",
-                    "weight": "bold",
-                    "margin": "sm",
-                    "flex": 0,
-                    "size": "sm"
-                },
-                {
-                    "type": "text",
-                    "text": start_Station,
-                    "size": "xxs",
-                    "align": "end",
-                    "color": "#aaaaaa"
-                }
-            ]
-        })
-
-        if (stop_Station.length > 0) {
-            for (var loc in stop_Station) {
-                if (stop_Station[loc][0] != '') {
-                    station.push({ // 放中途停靠站
-                        "type": "box",
-                        "layout": "baseline",
-                        "contents": [
-                            {
-                                "type": "icon",
-                                "url": "https://imgur.com/1Nhpqcj.png"
-                            },
-                            {
-                                "type": "text",
-                                "text": "停靠" + (loc + 1),
-                                "weight": "bold",
-                                "margin": "sm",
-                                "flex": 0,
-                                "size": "sm"
-                            },
-                            {
-                                "type": "text",
-                                "text": stop_Station[loc][0],
-                                "size": "xxs",
-                                "align": "end",
-                                "color": "#aaaaaa"
-                            }
-                        ]
-                    })
-                }
-            }
-        }
-
-        station.push({ // 放下車地點
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-                {
-                    "type": "icon",
-                    "url": "https://imgur.com/1Nhpqcj.png"
-                },
-                {
-                    "type": "text",
-                    "text": "下車",
-                    "weight": "bold",
-                    "margin": "sm",
-                    "flex": 0,
-                    "size": "sm"
-                },
-                {
-                    "type": "text",
-                    "text": end_Station,
-                    "size": "xxs",
-                    "align": "end",
-                    "color": "#aaaaaa"
-                }
-            ]
-        })
-
         liff.sendMessages([
             {
                 type: 'text',
-                text: '成功叫車，訂單編號：'+orderid
+                text: '恭喜您預訂場地成功！'
             },
             {
                 "type": "flex",
@@ -246,71 +81,122 @@ function sendFlexMessages_order(arrive_time, totalKM, totalTime, money, carStyle
                     "type": "bubble",
                     "hero": {
                         "type": "image",
-                        "url": "https://imgur.com/ySHFdcA.png",
+                        "url": "https://keyue-cf5084f09962.herokuapp.com/media/model_images/7b9320b3-5370-49de-9d1e-7e274c025ed5.jpg",
                         "size": "full",
                         "aspectRatio": "20:13",
                         "aspectMode": "cover",
+                        "action": {
+                            "type": "uri",
+                            "uri": "http://linecorp.com/"
+                        }
                     },
                     "body": {
                         "type": "box",
                         "layout": "vertical",
-                        "spacing": "md",
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "我叫的車",
-                                "size": "xl",
-                                "weight": "bold"
+                                "text": "雪茄室",
+                                "weight": "bold",
+                                "size": "xl"
                             },
                             {
-                                "type": "text",
-                                "text": totalKM + "公里　" + totalTime + "分鐘",
-                                "wrap": true,
-                                "color": "#aaaaaa",
-                                "size": "xxs"
+                                "type": "separator"
                             },
                             {
                                 "type": "box",
                                 "layout": "vertical",
+                                "margin": "lg",
                                 "spacing": "sm",
-                                "contents": station
-                            },
-                            {
-                                "type": "text",
-                                "text": timestamp,
-                                "wrap": true,
-                                "color": "#aaaaaa",
-                                "size": "xxs"
+                                "contents": [
+                                    {
+                                        "type": "box",
+                                        "layout": "baseline",
+                                        "spacing": "sm",
+                                        "contents": [
+                                            {
+                                                "type": "text",
+                                                "text": "地點",
+                                                "color": "#aaaaaa",
+                                                "size": "sm",
+                                                "flex": 1
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "台北市中山區興安街106號1樓",
+                                                "wrap": true,
+                                                "color": "#666666",
+                                                "size": "sm",
+                                                "flex": 5
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "box",
+                                        "layout": "baseline",
+                                        "spacing": "sm",
+                                        "contents": [
+                                            {
+                                                "type": "text",
+                                                "text": "開始",
+                                                "color": "#aaaaaa",
+                                                "size": "sm",
+                                                "flex": 1
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "2023/8/10 10:00",
+                                                "wrap": true,
+                                                "color": "#666666",
+                                                "size": "sm",
+                                                "flex": 5
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "box",
+                                        "layout": "baseline",
+                                        "spacing": "sm",
+                                        "contents": [
+                                            {
+                                                "type": "text",
+                                                "text": "結束",
+                                                "color": "#aaaaaa",
+                                                "size": "sm",
+                                                "flex": 1
+                                            },
+                                            {
+                                                "type": "text",
+                                                "text": "2023/8/10 23:00",
+                                                "wrap": true,
+                                                "color": "#666666",
+                                                "size": "sm",
+                                                "flex": 5
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     "footer": {
                         "type": "box",
                         "layout": "vertical",
+                        "spacing": "sm",
                         "contents": [
                             {
                                 "type": "button",
-                                "style": "primary",
-                                "color": "#5d82bb",
-                                "margin": "xxl",
+                                "style": "secondary",
+                                "height": "md",
                                 "action": {
                                     "type": "uri",
-                                    "label": "查看訂單狀態",
-                                    "uri": "https://liff.line.me/1657826069-8DjJbz1m?order=" + orderid
-                                }
-                            },
-                            {
-                                "type": "button",
-                                "style": "link",
-                                "color": "#5d82bb",
-                                "margin": "none",
-                                "action": {
-                                    "type": "uri",
-                                    "label": "取消訂單",
-                                    "uri": "https://liff.line.me/1657826069-yVdwr8Ab?order=" + orderid
-                                }
+                                    "label": "訂位修改",
+                                    "uri": "https://linecorp.com"
+                                },
+                                "color": "#f4ca82"
                             }
-                        ]
+                        ],
+                        "flex": 0
                     }
                 }
             }
