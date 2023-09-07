@@ -67,7 +67,7 @@ function sendTextMessages(word) {
 }
 
 // 使用者叫車_回傳選單
-function sendFlexMessages_order() {
+function sendFlexMessages_order(heroCover, roomID, roomName, startTime, endTime) {
     try {
         liff.sendMessages([
             {
@@ -76,18 +76,18 @@ function sendFlexMessages_order() {
             },
             {
                 "type": "flex",
-                "altText": "自動叫車",
+                "altText": "預定場地",
                 "contents": {
                     "type": "bubble",
                     "hero": {
                         "type": "image",
-                        "url": "https://keyue-cf5084f09962.herokuapp.com/media/model_images/7b9320b3-5370-49de-9d1e-7e274c025ed5.jpg",
+                        "url": heroCover,
                         "size": "full",
                         "aspectRatio": "20:13",
                         "aspectMode": "cover",
                         "action": {
                             "type": "uri",
-                            "uri": "http://linecorp.com/"
+                            "uri": "https://keyue.com.tw/appointment/"+roomID
                         }
                     },
                     "body": {
@@ -96,7 +96,7 @@ function sendFlexMessages_order() {
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "雪茄室",
+                                "text": roomName,
                                 "weight": "bold",
                                 "size": "xl"
                             },
@@ -145,7 +145,7 @@ function sendFlexMessages_order() {
                                             },
                                             {
                                                 "type": "text",
-                                                "text": "2023/8/10 10:00",
+                                                "text": startTime,
                                                 "wrap": true,
                                                 "color": "#666666",
                                                 "size": "sm",
@@ -167,7 +167,7 @@ function sendFlexMessages_order() {
                                             },
                                             {
                                                 "type": "text",
-                                                "text": "2023/8/10 23:00",
+                                                "text": endTime,
                                                 "wrap": true,
                                                 "color": "#666666",
                                                 "size": "sm",
@@ -191,7 +191,7 @@ function sendFlexMessages_order() {
                                 "action": {
                                     "type": "uri",
                                     "label": "訂位修改",
-                                    "uri": "https://linecorp.com"
+                                    "uri": "https://keyue.com.tw/account?tabIndex=1"
                                 },
                                 "color": "#f4ca82"
                             }
