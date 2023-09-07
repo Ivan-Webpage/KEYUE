@@ -57,18 +57,15 @@ function getMail() {
 
 
 // 使用者回傳文字
-async function sendTextMessages(word) {
-    await liff.init({
-        liffId: "2000531869-3Q4KdXkj",
-    }).then(async function () {
-        liff.sendMessages([
-            {
-                type: 'text',
-                text: word
-            }
-        ])
-    }).catch(function (error) {
+function sendTextMessages(word) {
+    liff.sendMessages([
+        {
+            type: 'text',
+            text: word
+        }
+    ]).catch(function (error) {
         console.log("掛掉了: " + error);
+        return false;
     });
 }
 
@@ -93,7 +90,7 @@ function sendFlexMessages_order(heroCover, roomID, roomName, startTime, endTime)
                         "aspectMode": "cover",
                         "action": {
                             "type": "uri",
-                            "uri": "https://keyue.com.tw/appointment/"+roomID
+                            "uri": "https://keyue.com.tw/appointment/" + roomID
                         }
                     },
                     "body": {
