@@ -57,13 +57,19 @@ function getMail() {
 
 
 // 使用者回傳文字
-function sendTextMessages(word) {
-    liff.sendMessages([
-        {
-            type: 'text',
-            text: word
-        }
-    ])
+async function sendTextMessages(word) {
+    await liff.init({
+        liffId: "2000531869-3Q4KdXkj",
+    }).then(async function () {
+        liff.sendMessages([
+            {
+                type: 'text',
+                text: word
+            }
+        ])
+    }).catch(function (error) {
+        console.log("掛掉了: " + error);
+    });
 }
 
 // 使用者叫車_回傳選單
