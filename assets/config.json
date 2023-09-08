@@ -2,6 +2,9 @@
     "domain":"https://keyue.com.tw/",
     "backend_host":"https://keyue-cf5084f09962.herokuapp.com",
     "line_liff_id":{
-        "appointment": "2000531869-3Q4KdXkj"
+        "home": "2000531869-pMO2LoXr",
+        "appointment": "2000531869-3Q4KdXkj",
+        "signin": "2000531869-4Ra5ywl6",
+        "changeOrder": "2000531869-mAL9WKdD"
     }
 }
