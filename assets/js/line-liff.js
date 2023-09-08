@@ -10,18 +10,7 @@ async function getLiff(liffID) {
 async function login(backURL) {
     await liff.login({
         redirectUri: backURL // 使用者登入後要去到哪個頁面
-    }).then(async function () {
-        if (liff.isLoggedIn()) {
-            // alert('您已經登入成功！')
-            return true;
-        } else {
-            // alert('很抱歉！登入失敗')
-            return false;
-        }
-    }).catch(function (error) {
-        console.log("掛掉了: " + error);
-        return false;
-    });
+    })
 }
 
 // 關閉liff畫面
