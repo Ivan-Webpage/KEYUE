@@ -12,7 +12,12 @@ async function login(backURL) {
         redirectUri: backURL // 使用者登入後要去到哪個頁面
     })
 }
-
+// 登出
+function logout() {
+    if (liff.isLoggedIn()) {
+        liff.logout();
+    }
+}
 // 關閉liff畫面
 function turnOff() {
     liff.closeWindow();
