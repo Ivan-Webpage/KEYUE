@@ -188,7 +188,7 @@ function sendFlexMessages_order(heroCover, roomID, roomName, startTime, endTime)
                                 "action": {
                                     "type": "uri",
                                     "label": "訂位修改",
-                                    "uri": "https://keyue.com.tw/account?tabIndex=1"
+                                    "uri": "https://keyue.com.tw/line/changeorder"
                                 },
                                 "color": "#f4ca82"
                             }
