@@ -1,6 +1,6 @@
 {
     "domain":"https://keyue.com.tw/",
-    "backend_host":"https://keyue-cf5084f09962.herokuapp.com",
+    "backend_host":"https://keyue.fly.dev",
     "line_liff_id":{
         "home": "2000531869-pMO2LoXr",
         "appointment": "2000531869-3Q4KdXkj",
